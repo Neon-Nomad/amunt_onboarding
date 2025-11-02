@@ -1,0 +1,5 @@
+{
+  "name": "Amunet AI Receptionist",
+  "description": "A SaaS application for an AI receptionist and booking assistant that also manages social media and drafts newsletters. Includes a landing page, playground, ROI calculator, and a project briefing section to gather more requirements.",
+  "requestFramePermissions": []
+}

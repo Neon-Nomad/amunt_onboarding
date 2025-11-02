@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amunet AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Orbitron:wght@700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Nunito Sans', 'sans-serif'],
+              heading: ['Orbitron', 'sans-serif'],
+            },
+            colors: {
+              'amunet-bg': '#050406',
+              'amunet-primary': '#110E13',
+              'amunet-secondary': '#1C1A1F',
+              'amunet-accent': '#9D00FF',
+              'amunet-light': '#a8a2b1',
+              'amunet-white': '#E0E1DD',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        .parallax-container {
+            position: relative;
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            perspective: 1px;
+        }
+        .parallax-layer {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .parallax-bg {
+            transform: translateZ(-1px) scale(2);
+        }
+        .main-content {
+            position: relative;
+            z-index: 1;
+        }
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "express": "https://aistudiocdn.com/express@^5.1.0",
+    "cors": "https://aistudiocdn.com/cors@^2.8.5",
+    "dotenv": "https://aistudiocdn.com/dotenv@^17.2.3"
+  }
+}
+</script>
+</head>
+  <body class="bg-amunet-bg text-amunet-white">
+    <div id="root"></div>
+  </body>
+</html>
