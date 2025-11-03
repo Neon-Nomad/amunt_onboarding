@@ -12,6 +12,7 @@ import CheckoutForm from './components/CheckoutForm';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import HowItWorks from './components/HowItWorks';
+import TechnicalArchitecture from './components/TechnicalArchitecture';
 
 const App: React.FC = () => {
   const [activePage, setActivePage] = useState<Page>('landing');
@@ -60,6 +61,8 @@ const App: React.FC = () => {
         return <Pricing setActivePage={setActivePage} />;
       case 'how-it-works':
         return <HowItWorks setActivePage={setActivePage} />;
+      case 'technical-architecture':
+        return <TechnicalArchitecture setActivePage={setActivePage} />;
       case 'signup':
         return <SignUp setActivePage={setActivePage} />;
       case 'login':

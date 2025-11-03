@@ -52,6 +52,7 @@ const Header: React.FC<HeaderProps> = ({ activePage, setActivePage }) => {
   const navItems = (
     <>
       <NavLink label="How It Works" page="how-it-works" activePage={activePage} setActivePage={() => handleNavClick('how-it-works')} className="px-4 py-2 rounded-md text-sm font-medium" />
+      <NavLink label="Tech Stack" page="technical-architecture" activePage={activePage} setActivePage={() => handleNavClick('technical-architecture')} className="px-4 py-2 rounded-md text-sm font-medium" />
       <NavLink label="Playground" page="playground" activePage={activePage} setActivePage={() => handleNavClick('playground')} className="px-4 py-2 rounded-md text-sm font-medium" />
       <NavLink label="Pricing" page="pricing" activePage={activePage} setActivePage={() => handleNavClick('pricing')} className="px-4 py-2 rounded-md text-sm font-medium" />
       <NavLink label="ROI Calculator" page="roi-calculator" activePage={activePage} setActivePage={() => handleNavClick('roi-calculator')} className="px-4 py-2 rounded-md text-sm font-medium" />

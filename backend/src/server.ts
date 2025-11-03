@@ -8,7 +8,13 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(cors());
+// Restrict CORS to a specific origin for better security
+const corsOptions = {
+  origin: 'https://app.amunet.ai',
+  credentials: true, // Allows cookies to be sent
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use('/api', apiRoutes);

@@ -1,4 +1,4 @@
-export type Page = 'landing' | 'playground' | 'roi-calculator' | 'pricing' | 'how-it-works' | 'client-dashboard' | 'admin-dashboard' | 'checkout' | 'signup' | 'login';
+export type Page = 'landing' | 'playground' | 'roi-calculator' | 'pricing' | 'how-it-works' | 'client-dashboard' | 'admin-dashboard' | 'checkout' | 'signup' | 'login' | 'technical-architecture';
 
 export type PlaygroundTab = 'receptionist' | 'social' | 'newsletter';
 

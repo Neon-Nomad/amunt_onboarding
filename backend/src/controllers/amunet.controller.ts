@@ -1,4 +1,3 @@
-
 import { Request, Response } from 'express';
 import * as geminiService from '../services/gemini.service';
 import { ChatMessage } from '../../../types';
@@ -108,4 +107,17 @@ export const adminDashboardStats = async (req: Request, res: Response) => {
     } catch (error) {
         handleError(res, error, "Failed to fetch admin dashboard stats.");
     }
+};
+
+export const impersonateClient = (req: Request, res: Response) => {
+    const { clientName } = req.body;
+    if (!clientName) {
+        return res.status(400).json({ error: 'Missing "clientName" in request body.' });
+    }
+    // In a real application, this would generate a temporary, scoped JWT or session
+    // allowing the admin to act as the specified client.
+    res.json({
+        success: true,
+        message: `Impersonation session for ${clientName} would be initiated here.`,
+    });
 };

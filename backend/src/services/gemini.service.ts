@@ -1,6 +1,4 @@
-
-
-import { GoogleGenAI, Type, Content } from "@google/genai";
+import { GoogleGenAI, Type, Content, GenerateContentResponse } from "@google/genai";
 import { AdminStats, DashboardData, ChatMessage } from "../../../types";
 
 const API_KEY = process.env.API_KEY;
@@ -16,10 +14,16 @@ const buildHistory = (history: ChatMessage[]): Content[] => {
         role: msg.role,
         parts: [{ text: msg.text }]
     }));
-}
+};
+
+const textToStream = async function*(result: AsyncIterable<GenerateContentResponse>): AsyncGenerator<string> {
+    for await (const chunk of result) {
+        yield chunk.text;
+    }
+};
 
 export const getReceptionistResponseStream = async (history: ChatMessage[]): Promise<AsyncGenerator<string>> => {
-    const model = ai.models['gemini-2.5-flash'];
+    const model = 'gemini-2.5-flash';
     const systemInstruction = `You are Amunet, an AI receptionist for "Sample MedSpa". Your tone is professional, warm, and not salesy. Your goal is to help potential clients book an appointment.
                 When a user wants to book, ask for the following information if they haven't provided it:
                 1. The service they are interested in (e.g., chemical peel, laser hair removal).
@@ -30,16 +34,13 @@ export const getReceptionistResponseStream = async (history: ChatMessage[]): Pro
 
     const contents = buildHistory(history);
 
-    const result = await model.generateContentStream({
+    const result = await ai.models.generateContentStream({
+        model,
         contents,
         config: { systemInstruction }
     });
 
-    return (async function*() {
-        for await (const chunk of result) {
-            yield chunk.text;
-        }
-    })();
+    return textToStream(result);
 };
 
 const getContextualSystemInstruction = (pageContext?: string): string => {
@@ -113,21 +114,18 @@ const getContextualSystemInstruction = (pageContext?: string): string => {
 }
 
 export const startChatbotStream = async (history: ChatMessage[], pageContext?: string): Promise<AsyncGenerator<string>> => {
-    const model = ai.models['gemini-2.5-flash'];
+    const model = 'gemini-2.5-flash';
     const systemInstruction = getContextualSystemInstruction(pageContext);
     
     const contents = buildHistory(history);
 
-    const result = await model.generateContentStream({
+    const result = await ai.models.generateContentStream({
+        model,
         contents,
         config: { systemInstruction }
     });
 
-    return (async function*() {
-        for await (const chunk of result) {
-            yield chunk.text;
-        }
-    })();
+    return textToStream(result);
 };
 
 
